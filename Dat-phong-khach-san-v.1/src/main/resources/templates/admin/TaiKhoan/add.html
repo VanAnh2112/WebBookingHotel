@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+
+<body>
+	<section class="row" layout:fragment="content">
+		<div class="col-6 offset-3 mt-4">
+			<form th:action="@{/admin/TaiKhoan/saveOrUpdate}" method="get"
+				th:object="${taiKhoan}">
+				<div class="card">
+					<div class="card-header">
+						<h5 th:unless="${taiKhoan.isEdit}">Thêm mới tài khoản</h5>
+						<h5 th:if="${taiKhoan.isEdit}">Chỉnh sửa tài khoản</h5>
+					</div>
+					<div class="card-body">
+						<input type="hidden" th:filed="*{isEdit}">
+						<div class="form-group" th:if="${taiKhoan.isEdit}">
+							<input type="hidden" th:field="*{isEdit}"> <label
+								for="Id">Mã</label> <input type="number" class="form-control"
+								th:field="*{Id}" aria-describedby="taiKhoanHid" placeholder=""
+								readonly="readonly"> <small id="taiKhoanHid"
+								th:if="${#fields.hasErrors('Id')}" class="form-text text-muted"></small>
+						</div>
+						<div class="form-group">
+							<label for="Ten">Tên tài khỏan</label> <input type="text"
+								class="form-control" th:field="*{ten}" id="ten"
+								aria-describedby="taiKhoanHTen" placeholder="Tên tài khoản">
+							<small id="taiKhoanHTen" th:if="${#fields.hasErrors('ten')}"
+								class="form-text text-muted">Tên phải nhiều hơn 6 ký tự </small>
+
+						</div>
+						<div class="form-group">
+							<label for="HoTen">Họ và tên</label> <input type="text"
+								class="form-control" th:field="*{HoTen}" id="Ten"
+								aria-describedby="taiKhoanHHoTen" placeholder=" Họ và tên">
+							<small id="taiKhoanHHoTen" th:if="${#fields.hasErrors('HoTen')}"
+								class="form-text text-muted">Không bỏ trống trường này</small>
+
+						</div>
+						<div class="form-group">
+							<label for="MatKhau">Mật khẩu</label> <input type="password"
+								class="form-control" th:field="*{MatKhau}" id="MatKhau"
+								aria-describedby="taiKhoanHMatKhau" placeholder=""> <small
+								id="taiKhoanHMatKhau" th:if="${#fields.hasErrors('MatKhau')}"
+								class="form-text text-muted">Có độ dài từ 6 - 15 kí tự. Ít nhất 1 kí tự thường, 1 kí tự viết hoa và 1 chữ số,1 trong các kí tự đặc biệt sau (! # $ @ _ + , ? . - ) </small>
+						</div>
+						<div class="form-group">
+							<label for="SoDienThoai">Số điện thoại</label> <input
+								type="text" class="form-control" th:field="*{SoDienThoai}"
+								id="SoDienThoai" aria-describedby="taiKhoanHSoDienThoai"
+								placeholder=""><small
+								id="taiKhoanHSoDienThoai"
+								th:if="${#fields.hasErrors('SoDienThoai')}"
+								class="form-text text-muted">Số điện thoại không đúng định dạng. </small>
+						</div>
+						<div class="form-group">
+							<label for="Email">Email</label> <input type="email"
+								class="form-control" th:field="*{Email}" id="Email"
+								aria-describedby="taiKhoanHEmail" placeholder=""> <small
+								id="taiKhoanHEmail" th:if="${#fields.hasErrors('Email')}"
+								class="form-text text-muted"> Email không đúng định dạng</small>
+						</div>
+						<div class="form-group">
+							<label for="GioiTinh">Giới tính</label> <select id="GioiTinh"
+								class="form-control" th:field="*{GioiTinh}">
+								<option selected value="Nam">Nam</option>
+								<option value="Nữ">Nữ</option>
+								<option value="Không tiết lộ">Không tiết lộ</option>
+							</select>
+						</div>
+						<div class="form-check form-group">
+							<input type="checkbox" class="form-check-input" id="isAdmin"
+								th:field="*{IsAdmin}"> <label class="form-check-label"
+								for="isAdmin" th:value="true"  >Quản trị viên</label>
+						</div>
+						<div class="card-footer text-muted">
+							<a th:href="@{/admin/TaiKhoan/}"
+								class="btn btn-success   float-left">Danh sách</a> <a
+								th:href="@{/admin/TaiKhoan/add}" th:if="${taiKhoan.isEdit}"
+								class="btn btn-outline-success ml-3">Tạo mới</a>
+
+							<button class="btn btn-primary float-right">
+								<i class="fas fa-save    "></i><span th:if="${taiKhoan.isEdit}">
+									Lưu chỉnh sửa</span> <span th:unless="${taiKhoan.isEdit}">Lưu
+									mới</span>
+							</button>
+						</div>
+					</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

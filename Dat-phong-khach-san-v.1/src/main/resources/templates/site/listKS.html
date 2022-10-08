@@ -1,0 +1,371 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{site/dashboardLayout.html}">
+
+<head>
+<meta charset="utf-8">
+<title>BOOKING</title>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Free HTML Templates" name="keywords">
+<meta content="Free HTML Templates" name="description">
+
+
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+
+<!-- Font Awesome -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet"
+	th:href="@{/lib/owlcarousel/assets/owl.carousel.min.css}">
+<link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	rel="stylesheet"
+	th:href="@{/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" />
+
+<!-- Customized Bootstrap Stylesheet -->
+<link th:href="@{/css/style1.css}" rel="stylesheet">
+</head>
+
+<body layout:fragment="content">
+	<!-- Topbar Start -->
+	<div class="container-fluid bg-light pt-3 d-none d-lg-block">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+					<div class="d-inline-flex align-items-center">
+						<p>
+							<i class="fa fa-envelope mr-2"></i>Booking@gmail.com
+						</p>
+						<p class="text-body px-3">|</p>
+						<p>
+							<i class="fa fa-phone-alt mr-2"></i>+012 345 6789
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-6 text-center text-lg-right">
+					<div class="d-inline-flex align-items-center">
+						<a class="text-primary px-3" href=""> <i
+							class="fab fa-facebook-f"></i>
+						</a> <a class="text-primary px-3" href=""> <i
+							class="fab fa-twitter"></i>
+						</a> <a class="text-primary px-3" href=""> <i
+							class="fab fa-linkedin-in"></i>
+						</a> <a class="text-primary px-3" href=""> <i
+							class="fab fa-instagram"></i>
+						</a> <a class="text-primary pl-3" href=""> <i
+							class="fab fa-youtube"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Topbar End -->
+
+	<!-- Navbar Start -->
+	<div class="container-fluid position-relative nav-bar p-0">
+		<div class="container-lg position-relative p-0 px-lg-3"
+			style="z-index: 9;">
+			<nav
+				class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+				<a th:href="@{/}" class="navbar-brand">
+					<h1 class="m-0 text-primary">
+						<span class="text-dark">BOOK</span>ING
+					</h1>
+				</a>
+				<button type="button" class="navbar-toggler" data-toggle="collapse"
+					data-target="#navbarCollapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-between px-3"
+					id="navbarCollapse">
+					<div class="navbar-nav ml-auto py-0">
+						<a th:href="@{/}" class="nav-item nav-link">Trang
+							chủ</a> <a th:href="@{/listKS}" class="nav-item nav-link  active">Khách Sạn</a>
+						<a th:href="@{/}" class="nav-item nav-link">Dịch Vụ</a> <a
+							th:href="@{/}" class="nav-item nav-link">Tin Tức</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- Navbar End -->
+
+	<!-- Header Start -->
+	<div class="container-fluid page-header">
+		<div class="container">
+			<div
+				class="d-flex flex-column align-items-center justify-content-center"
+				style="min-height: 400px">
+				<h3 class="display-4 text-white text-uppercase">Khách sạn</h3>
+				<div class="d-inline-flex text-white">
+					<p class="m-0 text-uppercase">
+						<a class="text-white" href="">Trang chủ</a>
+					</p>
+					<i class="fa fa-angle-double-right pt-1 px-3"></i>
+					<p class="m-0 text-uppercase">Khách sạn</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Header End -->
+
+
+
+
+	<!-- Blog Start -->
+	<div class="container-fluid py-5">
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="row pb-3">
+						<div class="col-md-6 mb-4 pb-2"
+							th:each="khachSan,iStat:${khachSanPage.content}">
+							<div class="package-item bg-white mb-2">
+								<img class="img-fluid"
+									th:src="@{'/img/KhachSan/'+${khachSan.UrlHinhAnh}}" alt="" style="width: 350px;height: 250px">
+								<div class="p-4">
+								<div class="d-flex justify-content-between mb-3">
+									<small class="m-0" th:text="${khachSan.ThanhPho}"><i
+										class="fa fa-map-marker-alt text-primary mr-2"></i></small> 
+								</div>
+								<a class="h5 text-decoration-none" th:href="@{'/listKS/' + ${khachSan.khachSanId}}" th:text="${khachSan.ten}"></a>
+								<div class="border-top mt-4 pt-4">
+									<div class="d-flex justify-content-between">
+										<h6 class="m-0">
+											<i class="fa fa-star text-primary mr-2"></i><small style="font-size: 18px" th:text="${khachSan.DanhGia}"></small>
+										</h6>
+										<h5 class="m-0"><i class="fa fa-phone text-primary mr-2"></i><small th:text="${khachSan.SoDienThoai}"></small></h5>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<form action="">
+								<div class="form-inline float-left">
+									<label for="size">Page size : </label> <select name="size"
+										id="size" class="form control" onchange="this.form.submit()">
+										<option value="6" th:selected="${khachSanPage.size==6}">6</option>
+										<option value="12" th:selected="${khachSanPage.size==12}">12</option>
+										<option value="24" th:selected="${khachSanPage.size==24}">24</option>
+										<option value="30" th:selected="${khachSanPage.size==30}">30</option>
+										<option value="36" th:selected="${khachSanPage.size==36}">36</option>
+									</select>
+								</div>
+							</form>
+							<nav aria-label="Page navigation"
+								th:if="${khachSanPage.totalPages > 0 }">
+								<ul class="pagination justify-content-center">
+									<li
+										th:class="${1==khachSanPage.number+1}? 'page-item active':'page-item'">
+										<a
+										th:href="@{/listKS/(name=${ten},size=${khachSanPage.size},page=${1})}"
+										class="page-link"> First </a>
+									</li>
+
+									<li class="page-item active"
+										th:each=" pageNumber: ${pageNumbers}"
+										th:if="${khachSanPage.totalPages > 1}"
+										th:class="${pageNumber==khachSanPage.number+1}? 'page-item active':'page-item'">
+										<a
+										th:href="@{/listKS/(name=${ten},size=${khachSanPage.size},page=${pageNumber})}"
+										class="page-link" th:text="${pageNumber}"> </a>
+									<li
+										th:class="${khachSanPage.totalPages == khachSanPage.number + 1} ? 'page-item active':'page-item'">
+										<a
+										th:href="@{/listKS/(name=${ten},size=${khachSanPage.size},page=${khachSanPage.totalPages})}"
+										class="page-link"> Last </a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 mt-5 mt-lg-0">
+
+					<div class="mb-5">
+						<div class="bg-white" style="padding: 30px;">
+							<form th:action="@{/listKS/searchpaginated}" method="get">
+								<div class="input-group">
+									<input type="text" class="form-control p-4"
+										placeholder="Tên khách sạn tìm kiếm" id="ten" name="ten">
+									<div class="input-group-append">
+										<button
+											class="input-group-text bg-primary border-primary text-white btn btn-primary ">
+											<i class="fa fa-search"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<!-- Search Form -->
+					<div class="mb-5">
+						<h5 class="text-uppercase mb-4" style="letter-spacing: 5px;">Loại
+							bất động sản</h5>
+						<div class="bg-white" style="padding: 30px;">
+							<ul class="list-inline m-0">
+								<li th:each="loaiKhachSan:${LoaiKhachSan}"
+									class="mb-3 d-flex justify-content-between align-items-center">
+									<a class="text-dark "
+									th:href="@{'/listKS/searchLoaiKhachSan/'+${loaiKhachSan.ten} }"
+									th:value="${loaiKhachSan.ten}" method="get"
+									th:text="${loaiKhachSan.ten}"></a> <span
+									class="badge badge-primary badge-pill" th:text="${loaiKhachSan.MoTa}"></span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Category List -->
+
+					<!-- Category List -->
+					<div class="mb-5">
+						<h5 class="text-uppercase mb-4" style="letter-spacing: 5px;">Thành Phố</h5>
+						<div class="bg-white" style="padding: 30px;">
+							<ul class="list-inline m-0">
+								<li th:each="thanhPho:${ThanhPho}"
+									class="mb-3 d-flex justify-content-between align-items-center">
+									<a class="text-dark" th:href="@{'/listKS/searchThanhPho/'+${thanhPho.ten} }"
+									th:value="${thanhPho.ten}" th:text="${thanhPho.ten}"></a> <span
+									class="badge badge-primary badge-pill" th:text="${thanhPho.MoTa}"></span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="mb-5">
+						<h5 class="text-uppercase mb-4" style="letter-spacing: 5px;">Đánh Giá</h5>
+						<div class="bg-white" style="padding: 30px;">
+							<ul class="list-inline m-0">
+								<li 
+									class="mb-3 d-flex justify-content-between align-items-center">
+									<a class="text-dark"  th:href="@{/listKS/searchDanhGia/1 }"
+									th:value="1" th:text="1"></a> <span
+									class="badge badge-primary badge-pill">sao</span>
+									<a class="text-dark" th:href="@{/listKS/searchDanhGia/2 }"
+									th:value="2" th:text="2"></a> <span
+									class="badge badge-primary badge-pill">sao</span>
+									<a class="text-dark" th:href="@{/listKS/searchDanhGia/3}"
+									th:value="3" th:text="3"></a> <span
+									class="badge badge-primary badge-pill">sao</span>
+									<a class="text-dark" th:href="@{/listKS/searchDanhGia/4 }"
+									th:value="4" th:text="4"></a> <span
+									class="badge badge-primary badge-pill">sao</span>
+									<a class="text-dark" th:href="@{/listKS/searchDanhGia/5}"
+									th:value="5" th:text="5"></a> <span
+									class="badge badge-primary badge-pill">sao</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Blog End -->
+
+
+	<!-- Footer Start -->
+	<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5"
+		style="margin-top: 90px;">
+		<div class="row pt-5">
+			<div class="col-lg-6 col-md-9 mb-5">
+				<a href="" class="navbar-brand">
+					<h1 class="text-primary">
+						<span class="text-white">BOOK</span>ING
+					</h1>
+				</a>
+				<p>Khám phá ngay những ưu đãi tốt nhất dành cho bạn tại Booking!</p>
+				<h6 class="text-white text-uppercase mt-4 mb-3"
+					style="letter-spacing: 5px;">Follow Us</h6>
+				<div class="d-flex justify-content-start">
+					<a class="btn btn-outline-primary btn-square mr-2" href="#"><i
+						class="fab fa-twitter"></i></a> <a
+						class="btn btn-outline-primary btn-square mr-2" href="#"><i
+						class="fab fa-facebook-f"></i></a> <a
+						class="btn btn-outline-primary btn-square mr-2" href="#"><i
+						class="fab fa-linkedin-in"></i></a> <a
+						class="btn btn-outline-primary btn-square" href="#"><i
+						class="fab fa-instagram"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 mb-5">
+				<h5 class="text-white text-uppercase mb-4"
+					style="letter-spacing: 5px;">Link</h5>
+				<div class="d-flex flex-column justify-content-start">
+					<a class="text-white-50 mb-2" th:href="@{/}"><i
+						class="fa fa-angle-right mr-2"></i>Trang chủ</a> <a
+						class="text-white-50 mb-2" th:href="@{/listKS}"><i
+						class="fa fa-angle-right mr-2"></i>Khách sạn</a> <a
+						class="text-white-50 mb-2" th:href="@{/}"><i
+						class="fa fa-angle-right mr-2"></i>Dịch vụ</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 mb-5">
+				<h5 class="text-white text-uppercase mb-4"
+					style="letter-spacing: 5px;">Liên hệ:</h5>
+				<p>
+					<i class="fa fa-map-marker-alt mr-2"></i> TP.Hồ Chí Minh, VN
+				</p>
+				<p>
+					<i class="fa fa-phone-alt mr-2"></i>+012 345 67890
+				</p>
+				<p>
+					<i class="fa fa-envelope mr-2"></i>Booking@example.com
+				</p>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer End -->
+
+
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+		class="fa fa-angle-double-up"></i></a>
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script type="text/javascript" th:src="@{/admin/bootstrap.mim.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/admin/jquery-3.3.1.slim.min.js}"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+
+	<script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>
+	<script
+		th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/lib/easing/easing.min.js}"></script>
+	<script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+	<script th:src="@{/lib/tempusdominus/js/moment.min.js}"></script>
+	<script th:src="@{/lib/tempusdominus/js/moment-timezone.min.js}"></script>
+	<script
+		th:src="@{/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+	<!-- Contact Javascript File -->
+	<script th:src="@{/mail/jqBootstrapValidation.min.js}"></script>
+	<script th:src="@{/mail/contact.js}"></script>
+
+	<!-- Template Javascript -->
+	<script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>

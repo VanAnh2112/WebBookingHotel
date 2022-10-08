@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+ <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:fragment="nav">
+ <nav class="navbar navbar-expand-sm fixed-top bg-light  ">
+                <a class="navbar-brand" th:href="@{/admin/KhachSan/}">BOOKING</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0 nav-pill">
+                    <li class="nav-item">
+                      <a class="nav-link"  th:href="@{/admin/KhachSan/}">QL Khách sạn</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  th:href="@{/admin/LoaiKhachSan/}">QL Loại Khách sạn</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  th:href="@{/admin/Phong/}">QL Phòng</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  th:href="@{/admin/ThanhPho/}">QL Thành Phố</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  th:href="@{/admin/TaiKhoan/}">QL Tài Khoản</a>
+                    </li>
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0" th:action="@{/logout}">
+                    <a class="btn btn-outline-danger my-2 my-sm-0" th:href="@{/logout}">Đăng xuất</a>
+                  </form>
+                </div>
+              </nav>
+
+</div>
+</body>
+</html>

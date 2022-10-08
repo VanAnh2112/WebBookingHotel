@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+
+<body>
+	<section class="row" layout:fragment="content">
+		<div class="col-6 offset-3 mt-4">
+			<form th:action="@{/admin/Phong/saveOrUpdate}" method="get"
+				th:object="${phong}">
+				<div class="card">
+					<div class="card-header">
+						<h5 th:unless="${phong.isEdit}">Thêm mới phòng</h5>
+						<h5 th:if="${phong.isEdit}">Chỉnh sửa phòng</h5>
+					</div>
+					<div class="card-body">
+						<input type="hidden" th:filed="*{isEdit}">
+						<div class="form-group" th:if="${phong.isEdit}">
+							<input type="hidden" th:field="*{isEdit}"> <label
+								for="Id">Mã</label> <input type="text" class="form-control"
+								th:field="*{Id}" aria-describedby="phongIdHid" placeholder=""
+								readonly="readonly"> <small id="phongHid"
+								th:if="${#fields.hasErrors('Id')}" class="form-text text-muted"></small>
+						</div>
+						<div class="form-group">
+							<label for="Ten">Tên</label> <input type="text"
+								class="form-control" th:field="*{ten}" id="ten"
+								aria-describedby="phongHTen" placeholder="Tên"> <small
+								id="phongHTen" th:if="${#fields.hasErrors('ten')}"
+								class="form-text text-muted">Tên loại khách sạn phải hơn
+								10 ký tự </small>
+
+						</div>
+						<div class="form-group">
+							<label for="loaiKhachSan">Khách sạn</label> <select id="KhachSan"
+								class="form-control" th:field="*{KhachSan}">
+								<option th:each="khachSan:${khachSan}" id="KhachSan"
+									th:value="${khachSan.ten}" th:text="${khachSan.ten}"></option>
+
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="DienTich">Diện tích</label> <input type="number"
+								class="form-control" th:field="*{DienTich}" id="DienTich"
+								aria-describedby="phongHDienTich" placeholder="Tên loại.....">
+							<small id="phongHDienTich"
+								th:if="${#fields.hasErrors('DienTich')}"
+								class="form-text text-muted">Giá trị nhập vào trường
+								phải lớn hơn 1 </small>
+						</div>
+						<div class="form-group">
+							<label for="GiaThue">Gía thuê</label> <input type="number"
+								class="form-control" th:field="*{GiaThue}" id="GiaThue"
+								aria-describedby="phongHGiaThue" placeholder=""> <small
+								id="phongHGiaThue" th:if="${#fields.hasErrors('GiaThue')}"
+								class="form-text text-muted">Giá trị nhập vào trường
+								phải lớn hơn 1 </small>
+						</div>
+						<div class="form-group">
+							<label for="TienNghi">Tiện nghi</label> <input type="text"
+								class="form-control" th:field="*{TienNghi}" id="TienNghi"
+								aria-describedby="phongHTienNghi" placeholder=""> <small
+								id="phongHTienNghi" th:if="${#fields.hasErrors('TienNghi')}"
+								class="form-text text-muted"> </small>
+						</div>
+						<div class="form-group">
+							<label for="MoTa">Mô tả</label>
+							<textarea class="form-control" th:field="*{MoTa}" id="MoTa"
+								rows="4" aria-describedby="phongHMoTa"></textarea>
+							<small id="phongHMoTa" th:if="${#fields.hasErrors('MoTa')}"
+								class="form-text text-muted">Trường này không bỏ trống </small>
+						</div>
+						<div class="card-footer text-muted">
+							<a th:href="@{/admin/Phong/}"
+								class="btn btn-success   float-left">Danh sách</a> <a
+								th:href="@{/admin/Phong/add}" th:if="${phong.isEdit}"
+								class="btn btn-outline-success ml-3">Tạo mới</a>
+
+							<button class="btn btn-primary float-right">
+								<i class="fas fa-save    "></i><span th:if="${phong.isEdit}">
+									Lưu chỉnh sửa</span> <span th:unless="${phong.isEdit}">Lưu mới</span>
+							</button>
+						</div>
+					</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

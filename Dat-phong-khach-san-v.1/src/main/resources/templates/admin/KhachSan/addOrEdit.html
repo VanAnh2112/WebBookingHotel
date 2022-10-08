@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+
+<body>
+	<section class="row" layout:fragment="content">
+		<div class="col mt-4">
+			<form th:action="@{/admin/KhachSan/saveOrUpdate}" method="get"
+				th:object="${khachSan}"enctype="multipart/form-data">
+				<div class="card">
+					<div class="card-header">
+						<h5 th:unless="${khachSan.isEdit}">ThÃªm má»›i khÃ¡ch sáº¡n</h5>
+						<h5 th:if="${khachSan.isEdit}">Chá»‰nh sá»­a khÃ¡ch sáº¡n</h5>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-7">
+								<input type="hidden" th:filed="*{isEdit}">
+								<div class="form-group" th:if="${khachSan.isEdit}">
+									<input type="hidden" th:field="*{isEdit}"> <label
+										for="Id">MÃ£</label> <input type="text" class="form-control"
+										th:field="*{khachSanId}" aria-describedby="KhachSanIdHid"
+										placeholder="" readonly="readonly"> <small
+										id="KhachSanHid" th:if="${#fields.hasErrors('khachSanId')}"
+										class="form-text text-muted"></small>
+								</div>
+								<div class="form-group">
+									<label for="ten">TÃªn</label> <input type="text"
+										class="form-control" th:field="*{ten}" id="ten"
+										aria-describedby="TenHId" placeholder="TÃªn khÃ¡ch sáº¡n">
+									<small id="TenHId" th:if="${#fields.hasErrors('ten')}"
+								class="form-text text-muted">TÃªn loáº¡i khÃ¡ch sáº¡n pháº£i hÆ¡n
+								20 kÃ½ tá»± </small>
+								</div>
+								<div class="form-group">
+									<label for="diaChi">Ä�á»‹a chá»‰</label> <input type="text"
+										class="form-control" th:field="*{DiaChi}" id="diaChi"
+										aria-describedby="diaChiHId" placeholder="Ä�á»‹a chá»‰ khÃ¡ch sáº¡n">
+									<small id="diaChiHId" th:if="${#fields.hasErrors('DiaChi')}"
+								class="form-text text-muted">KhÃ´ng bá»� trá»‘ng trÆ°á»�ng nÃ y</small>
+								</div>
+								<div class="form-group">
+									<label for="sdt">Sá»‘ Ä‘iá»‡n thoáº¡i</label> <input type="text"
+										class="form-control" th:field="*{SoDienThoai}" id="sdt"
+										aria-describedby="sdtHId" placeholder="Sá»‘ Ä‘iá»‡n thoáº¡i">
+									<small id="sdtHId" th:if="${#fields.hasErrors('SoDienThoai')}"
+								class="form-text text-muted">Sai Ä‘á»‹nh dáº¡ng ( Sá»‘ Ä‘iá»‡n thoáº¡i gá»“m 10 chá»¯ sá»‘)</small>
+								</div>
+								<div class="form-group">
+									<label for="cachTrungTam">CÃ¡ch trung tÃ¢m</label> <input
+										type="number" class="form-control" th:field="*{CachTrungTam}"
+										id="cachTrungTam" aria-describedby="cachTrungTamHId"
+										placeholder="km "> 
+										<small id="cachTrungTamHId"
+										class="form-text text-muted"></small>
+								</div>
+								<div class="form-group">
+									<label for="anNinh">An ninh khu vá»±c</label> <select id="anNinh"
+										class="form-control" th:field="*{AnNinh}">
+										<option selected value="Ráº¥t tá»‘t">Ráº¥t tá»‘t</option>
+										<option value="Tá»‘t">Tá»‘t</option>
+										<option value="KhÃ¡ tá»‘t">KhÃ¡ tá»‘t</option>
+										<option value="á»”n">á»”n</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-5">
+
+								<div class="form-group" style="margin-bottom: 25px;">
+									<label for="UrlHinhAnh">HÃ¬nh áº£nh</label>
+									<div class="input-group">
+										<input type="file" th:field="*{UrlHinhAnh}" class=""
+											placeholder="Hinh Anh">
+									</div>
+								</div>
+								<div class="form-group ">
+									<label for="danhGia">Ä�Ã¡nh giÃ¡</label> <select id="danhGia"
+										class="form-control" th:field="*{DanhGia}">
+										<option selected th:value="${1}">1 sao</option>
+										<option th:value="${2}">2 sao</option>
+										<option th:value="${3}">3 sao</option>
+										<option th:value="${4}">4 sao</option>
+										<option th:value="${5}">5 sao</option>
+									</select>
+								</div>
+								<div class="form-group ">
+									<label for="BuaAn">Bá»¯a Äƒn Ä‘i kÃ¨m:</label> 
+									<select id="BuaAn"
+										class="form-control" th:field="*{BuaAn}">
+										<option value="Bá»¯a sÃ¡ng">Bá»¯a sÃ¡ng</option>
+										<option value="Bá»¯a sÃ¡ng+ trÆ°a">Bá»¯a sÃ¡ng+ trÆ°a</option>
+										<option value="Bá»¯a tá»‘i">Bá»¯a tá»‘i</option>
+										<option value="Cáº£ ngÃ y">Cáº£ ngÃ y</option>
+
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label for="thanhPho">ThÃ nh phá»‘</label> <select id="thanhPho"
+										class="form-control" th:field="*{ThanhPho}">
+										<option th:each="thanhPho:${thanhPho}" th:value="${thanhPho.ten}" th:text="${thanhPho.ten}">HÃ  Ná»™i</option>
+										
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="loaiKhachSan">Loáº¡i khÃ¡ch sáº¡n</label> <select id="loaiKhachSan"
+										class="form-control" th:field="*{LoaiKhachSan}">
+										<option th:each="loaiKhachSan:${loaiKhachSan}" th:value="${loaiKhachSan.ten}" th:text="${loaiKhachSan.ten}"></option>
+										
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for="moTa">MÃ´ táº£</label>
+									<textarea class="form-control" name="moTa" id="moTa"
+										th:field="*{MoTa}" rows="4" aria-describedby="MoTaH"></textarea>
+									<small id="MoTaH" th:if="${#fields.hasErrors('MoTa')}"
+								class="form-text text-muted">KhÃ´ng bá»� trá»‘ng trÆ°á»�ng nÃ y</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer text-muted">
+						<a th:href="@{/admin/KhachSan/}" class="btn btn-success   float-left">Danh
+							sÃ¡ch</a>
+						<a th:href="@{/admin/KhachSan/add/}" th:if="${khachSan.isEdit}" class="btn btn-outline-success ml-3">Táº¡o má»›i</a>
+
+						<button class="btn btn-primary float-right">
+							<i class="fas fa-save    "></i><span th:if="${khachSan.isEdit}">
+								LÆ°u chá»‰nh sá»­a</span> <span th:unless="${khachSan.isEdit}">LÆ°u
+								má»›i</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
