@@ -20,7 +20,15 @@ Gồm có các chức năng cơ bản
 ![image](https://user-images.githubusercontent.com/110087686/194746073-8be12081-f381-4ba9-8e64-1df4fb1a17b2.png)
 ![image](https://user-images.githubusercontent.com/110087686/194746101-e83f1221-6f56-4fbf-bc10-a58f9b251221.png)
 - Trang đặt phòng
+
 ![image](https://user-images.githubusercontent.com/110087686/194746181-bda96fb5-1e97-423b-8918-06c0d47e10f5.png)
+- Đăng nhập
+![image](https://user-images.githubusercontent.com/110087686/194749358-1b50ed9e-a243-4a18-be6c-6d1d8cd59691.png)
+- Quản lý khách sạn
+![image](https://user-images.githubusercontent.com/110087686/194749412-5e8ceabc-eca5-46d5-8177-1d91d1df1e99.png)
+- Thêm khách sạn
+![image](https://user-images.githubusercontent.com/110087686/194749434-078c2cdf-1cf8-497a-b93b-ab174a1c8f15.png)
+
 
 
 
